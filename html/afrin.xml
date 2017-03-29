@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://specs.adfox.ru/uploads/vast.xsd">
+<Ad id="1185440">
+<InLine>
+<AdSystem>afx</AdSystem>
+<AdTitle>VAST Ad</AdTitle>
+<Impression><![CDATA[http://92.242.32.231/226279/event?rand=guoawdv&hash=%session_id%&pm=b&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Impression>
+<Impression><![CDATA[http://92.242.32.231/1/5295/c/v/2?i=%session_id%]]></Impression>
+<Impression><![CDATA[http://92.242.32.231/1/5296/c/v/2?i=%session_id%]]></Impression>
+<Creatives>
+
+<Creative id="1185440/%session_id%">
+
+<Linear>
+
+<Duration>00:00:10</Duration>
+
+<TrackingEvents>
+
+<Tracking event="creativeView"><![CDATA[http://92.242.32.231/226279/event?rand=nixawc&hash=%session_id%&pm=c&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="start"><![CDATA[http://92.242.32.231/226279/event?rand=cndjevd&hash=%session_id%&pm=d&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="midpoint"><![CDATA[http://92.242.32.231/226279/event?rand=gjyemfm&hash=%session_id%&pm=f&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="firstQuartile"><![CDATA[http://92.242.32.231/226279/event?rand=edvbdna&hash=%session_id%&pm=e&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="thirdQuartile"><![CDATA[http://92.242.32.231/226279/event?rand=diyrljm&hash=%session_id%&pm=g&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="complete"><![CDATA[http://92.242.32.231/226279/event?rand=exwnrtx&hash=%session_id%&pm=h&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="mute"><![CDATA[http://92.242.32.231/226279/event?rand=dkpeyxf&hash=%session_id%&pm=i&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="unmute"><![CDATA[http://92.242.32.231/226279/event?rand=ddyqjtg&hash=%session_id%&pm=j&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="pause"><![CDATA[http://92.242.32.231/226279/event?rand=geketla&hash=%session_id%&pm=k&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="rewind"><![CDATA[http://92.242.32.231/226279/event?rand=dewtirx&hash=%session_id%&pm=l&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="resume"><![CDATA[http://92.242.32.231/226279/event?rand=rzfhq&hash=%session_id%&pm=m&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="fullscreen"><![CDATA[http://92.242.32.231/226279/event?rand=zmcgvd&hash=%session_id%&pm=n&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="expand"><![CDATA[http://92.242.32.231/226279/event?rand=eimlkuy&hash=%session_id%&pm=o&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="collapse"><![CDATA[http://92.242.32.231/226279/event?rand=czpqkam&hash=%session_id%&pm=p&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="acceptInvitation"><![CDATA[http://92.242.32.231/226279/event?rand=gdkvcus&hash=%session_id%&pm=q&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+<Tracking event="close"><![CDATA[http://92.242.32.231/226279/event?rand=biutktm&hash=%session_id%&pm=r&p2=eyit&p5=cplpw&p1=brofh&pr=delouwv&puid6=1&puid11=100123&lts=eqavxqd&puid10=100123&eid1=5229:213873866:3246770427&puid30=5229]]></Tracking>
+
+
+</TrackingEvents>
+
+<VideoClicks>
+<ClickThrough><![CDATA[http://vi.ru]]></ClickThrough>
+</VideoClicks>
+
+<MediaFiles>
+
+<MediaFile id="1" delivery="progressive" type="video/mp4" bitrate="512" maintainAspectRatio="false" scalable="true" width="640" height="360">
+ <![CDATA[http://vi.cdnvideo.ru/media/m/BAYER_AG/Afrin_2016/imho_Afrin_10sec.mp4]]>
+</MediaFile>
+</MediaFiles>
+</Linear>
+</Creative>
+</Creatives>
+
+<Extensions>
+                <Extension type="Urlmod"   final="true"/>
+                <Extension type="exclusive">
+                <![CDATA[ 0 ]]>
+                </Extension>
+                <Extension type="closeAct">
+                <![CDATA[ no ]]>
+                </Extension>
+                <Extension type="skipTime2">00:05</Extension>
+                <Extension type="CustomTracking">
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_total/%session_id%]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_genre-100123/%session_id%]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_genre-/%session_id%]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_genre-/%session_id%]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_genre-/%session_id%]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[http://92.242.32.231/V13a****vitpc_ru/ru/CP1251/tmsec=vitpc_genre-/%session_id%]]></Tracking>
+                </Extension>
+<!--<Extension type="skipTime2"><![CDATA[]]></Extension>-->
+</Extensions>
+</InLine>
+</Ad>
+</VAST>

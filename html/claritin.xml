@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd">
+    <Ad id="1822613">
+	<Wrapper>
+	    <AdSystem version="1.0">AdFox IMHO Vi</AdSystem>
+	    <!--AdTitle>VAST Wrapper Ad</AdTitle-->
+	    <VASTAdTagURI><![CDATA[http://get.5visions.com/creative/316/vxj/1aaae385237.xml]]></VASTAdTagURI>
+<Error><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=faetkuo&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=077f0f508b117a3b&pm=u]]></Error>
+<Impression><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=ocuvqd&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=28f4f5c5ef3ebb59&pm=b]]></Impression>
+<Impression><![CDATA[]]></Impression>
+<Impression><![CDATA[]]></Impression>
+<Impression><![CDATA[]]></Impression>
+<Impression><![CDATA[]]></Impression>
+<Impression><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_monitoring-1/78114316]]></Impression>
+<Impression><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_counter-1/78114316]]></Impression>
+<Impression><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_video-37043/78114316]]></Impression>
+<Impression><![CDATA[https://imho.solution.weborama.fr/fcgi-bin/dispatch.fcgi?a.A=im&a.si=3558&a.te=6&a.he=1&a.wi=1&a.hr=p&a.ra=78114316]]></Impression>
+	    <Creatives>
+		<Creative id="1822613/606755">
+		    <Linear>
+			<TrackingEvents>
+<Tracking event="creativeView"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=egkgyhq&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=8845739c2315dd3f&pm=c]]></Tracking>
+<Tracking event="start"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=bzrflbz&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=b0f20591da387387&pm=d]]></Tracking>
+<Tracking event="midpoint"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=opceee&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=c01d9a80b8b1f686&pm=f]]></Tracking>
+<Tracking event="firstQuartile"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=ctsqxqq&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=052465abbe029a2d&pm=e]]></Tracking>
+<Tracking event="thirdQuartile"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=fzmacdi&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=eec79f76efd3ad03&pm=g]]></Tracking>
+<Tracking event="complete"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=fnieszv&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=8a680e7bb63af2cb&pm=h]]></Tracking>
+<Tracking event="mute"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=dtyuav&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=0192884c1fb13c09&pm=i]]></Tracking>
+<Tracking event="unmute"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=fkcsbce&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=fd56c13e1b0c4190&pm=j]]></Tracking>
+<Tracking event="pause"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=chhiqvw&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=3bd3f523f8c70acd&pm=k]]></Tracking>
+<Tracking event="rewind"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=bswforl&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=59185e79a068216f&pm=l]]></Tracking>
+<Tracking event="resume"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=dziyrep&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=e7c7085cdf5e54f0&pm=m]]></Tracking>
+<Tracking event="fullscreen"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=echenpf&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=daff8a4bff9b51d9&pm=n]]></Tracking>
+<Tracking event="expand"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=bfarysj&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=3a04a1b2c3eb2c25&pm=o]]></Tracking>
+<Tracking event="collapse"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=csgthvd&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=bbee1324ecad1bef&pm=p]]></Tracking>
+<Tracking event="acceptInvitation"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=dayzsnk&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=8457c2ca8bfe1942&pm=q]]></Tracking>
+<Tracking event="close"><![CDATA[http://v.adfox.ru/226279/event?p2=eyit&rand=gbgxajf&p5=dzsen&p1=bwbtc&pr=a&puid5=1&puid6=1&lts=evetinc&puid30=12311&hash=3788003b6b3470d4&pm=r]]></Tracking>
+
+			</TrackingEvents>
+<VideoClicks>
+<ClickTracking><![CDATA[http://v.adfox.ru/226279/goLink?puid30=12311&puid6=1&puid5=1&hash=2180bd47ab7633ab&pr=a&p5=dzsen&rand=dnkoatk&p1=bwbtc&p2=eyit@]]></ClickTracking>
+</VideoClicks>
+		    </Linear>
+		</Creative>
+	    </Creatives>
+<Extensions>
+<Extension type="Urlmod" scope="" method="" final="true">
+<urlpart><![CDATA[]]></urlpart>
+</Extension>
+<Extension type="CustomTracking">
+                    <Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_monitoring-1/78114316]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_counter-1/78114316]]></Tracking>
+                    <Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_video-37043/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_genre-/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_genre-/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_genre-/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_genre-/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://www.tns-counter.ru/V13a****vitpc_ad/ru/CP1251/tmsec=vitpc_genre-/78114316]]></Tracking>
+<Tracking event="onVastLoad"><![CDATA[https://imho.solution.weborama.fr/fcgi-bin/dispatch.fcgi?a.A=im&a.si=3558&a.te=6&a.he=1&a.wi=1&a.hr=p&a.ra=78114316]]></Tracking>
+                </Extension>
+<Extension type="skipTime2"><![CDATA[03:05]]></Extension>
+<Extension type="controls"><control id="adlabel" layout="-1"/>
+<control id="countdown" layout="-1"/><control id="soundbtn" layout="-1"/></Extension>
+</Extensions> 
+	</Wrapper>
+    </Ad>
+</VAST>
