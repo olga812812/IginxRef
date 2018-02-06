@@ -76,7 +76,8 @@ public class VastServlet extends HttpServlet {
          switch(respCode) {
          case "200":
             if(respCode.equals("200")) {
-               filename = Common.propLoad().getProperty("resp" + respNumber);
+               String[] allResps =  Common.propLoad().getProperty("resp" + respNumber).split(",");
+            	filename = allResps[(int)(Math.random()*allResps.length)];
                if(filename == null) {
                   return defaultResp;
                }
