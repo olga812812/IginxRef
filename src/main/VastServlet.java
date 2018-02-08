@@ -1,23 +1,30 @@
+package main;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
 
 public class VastServlet extends HttpServlet {
 
    private final Logger log = Logger.getLogger(IGINXMain.class);
+   String temp;
 
 
    protected void close(HttpServletRequest req) {
@@ -29,30 +36,39 @@ public class VastServlet extends HttpServlet {
       }
 
    }
+   
+   protected ArrayList<String> getDataFromConfig(String key, String resultType)
+   {
+	   Set<String> allNames = Common.propLoad().stringPropertyNames();
+	   Iterator<String> iter = allNames.iterator();
+	   ArrayList<String> responseArray = new ArrayList<String>();
+           
+       while(iter.hasNext()) 
+       {
+          temp = (String)iter.next();
+          if (temp.length()>=key.length()&&temp.substring(0, key.length()).equals(key))
+             {if(resultType.equals("key")) responseArray.add(temp);
+              if (resultType.equals("value")) responseArray.add(Common.propLoad().getProperty(temp));
+             }
+        }
+       return responseArray;
+   }
 
-   protected String[] getResp(HttpServletRequest req) {
+   public String[] getResp(HttpServletRequest req) {
       String filename = null;
       String defaultFile = Common.propLoad().getProperty("DefaultRespFile");
       String defaultRespCode = Common.propLoad().getProperty("DefaultRespCode");
       String defaultLocation = Common.propLoad().getProperty("DefaultLocation");
       String[] resp = new String[3];
       String[] defaultResp = new String[]{defaultRespCode, defaultFile, "0"};
-      ArrayList<String> urls = new ArrayList<String>();
-      Set<String> allNames = Common.propLoad().stringPropertyNames();
+      ArrayList<String> urls = getDataFromConfig("url", "key");
+     
+      
+     
       if(defaultFile != null && defaultRespCode != null && defaultLocation != null) {
-         Iterator<String> iter = allNames.iterator();
-
-         String temp;
-         while(iter.hasNext()) {
-            temp = (String)iter.next();
-            if(temp.substring(0, 3).equals("url")) {
-               urls.add(temp);
-            }
-         }
-
-         iter = urls.iterator();
-
+         Iterator<String>  iter = urls.iterator();
          boolean cond;
+         
          do {
             if(!iter.hasNext()) {
                return defaultResp;
@@ -121,8 +137,13 @@ public class VastServlet extends HttpServlet {
    }
 
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
-      MDC.put("requestId", requestId);
+	   Date date = new Date(new Date().getTime()+2592000000L);
+	   SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd-MMM-yyyy", Locale.ENGLISH);
+	   ArrayList<String> cookies = getDataFromConfig("Cookie", "value");
+	   Iterator<String>  iter = cookies.iterator();
+	   String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
+	   
+       MDC.put("requestId", requestId);
       this.log.info("URL is:  " + req.getScheme() + ":/" + req.getRequestURI() + "?" + req.getQueryString());
       Enumeration<String> headers = req.getHeaderNames();
 
@@ -134,7 +155,15 @@ public class VastServlet extends HttpServlet {
       PrintWriter out1 = resp.getWriter();
       String[] respArray = this.getResp(req);
       this.log.info("resp code " + respArray[0]);
-      resp.setHeader("Set-Cookie", "luid1=w:dfhvlb:w:final:a; expires=Fri, 02-Mar-2018 10:00:00 GMT; path=/; domain=" + Common.propLoad().getProperty("cookie_domain"));
+      if(req.getHeader("Cookie")==null)
+      {
+    	  while(iter.hasNext())
+    	  {
+    	  temp = (String)iter.next();
+    	  Common.print(temp);
+    	  resp.addHeader("Set-Cookie", temp+requestId+"; expires="+dateFormat.format(date)+" 10:00:00 GMT; path=/; domain=" + Common.propLoad().getProperty("cookie_domain"));
+    	  }
+      }
       if(req.getHeader("Origin") != null) {
          resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
          resp.setHeader("Access-Control-Allow-Credentials", "true");
