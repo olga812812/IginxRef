@@ -25,9 +25,9 @@ public class VastServletTest {
 		
 		request = mock(HttpServletRequest.class);
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
-		when(request.getQueryString()).thenReturn("puid30=3");
+		when(request.getQueryString()).thenReturn("puid6=5");
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"200","indesit.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","afrin.xml","0"}, myServlet.getResp(request));
 	}
 
 }
