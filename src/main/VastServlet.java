@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
@@ -84,11 +86,12 @@ public class VastServlet extends HttpServlet {
 
          String respNumber = temp.substring(3);
          String respCode = Common.propLoad().getProperty("code" + respNumber);
-         this.log.info("There is resp code for this URL in config file: " + respCode + " respNumber is " + respNumber);
+         
          if(respCode == null) {
             respCode = "200";
          }
-
+         this.log.info("There is resp code for this URL in config file: " + respCode + " respNumber is " + respNumber);
+         
          switch(respCode) {
          case "200":
             if(respCode.equals("200")) {
@@ -149,12 +152,13 @@ public class VastServlet extends HttpServlet {
 
       while(headers.hasMoreElements()) {
          String out = (String)headers.nextElement();
-         this.log.debug(out + ": " + req.getHeader(out));
+         this.log.debug("RequestHeader: "+ out + ": " + req.getHeader(out));
       }
+      this.log.debug("Request's client IP: " + req.getRemoteAddr());
 
       PrintWriter out1 = resp.getWriter();
       String[] respArray = this.getResp(req);
-      this.log.info("resp code " + respArray[0]);
+      this.log.info("Response code: " + respArray[0]);
       if(req.getHeader("Cookie")==null)
       {
     	  while(iter.hasNext())
@@ -213,7 +217,14 @@ public class VastServlet extends HttpServlet {
         	 
          }
 
-         
+       
+       Collection<String> respHeaders = resp.getHeaderNames();
+       Iterator<String> iterator = respHeaders.iterator();
+       while (iterator.hasNext())
+       {
+    	   temp =iterator.next();
+    	   this.log.info("Response headers: " +temp+"="+ resp.getHeaders(temp));  
+       }
 
       this.close(req);
    }
