@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Common {
 
-   public static Properties propLoad() {
+	  synchronized public static Properties propLoad() {
       Properties prop = new Properties();
       FileInputStream stream = null;
       InputStreamReader reader = null;
@@ -15,9 +15,13 @@ public class Common {
          stream = new FileInputStream(new File("IGINX.conf"));
          reader = new InputStreamReader(stream, "Windows-1251");
          prop.load(reader);
+         stream.close();
+         reader.close();
       } catch (Exception ex) {
          System.out.println(ex);
+         
       }
+      
 
       return prop;
    }

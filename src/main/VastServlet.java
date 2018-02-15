@@ -26,7 +26,8 @@ import org.apache.log4j.MDC;
 public class VastServlet extends HttpServlet {
 
    private final Logger log = Logger.getLogger(IGINXMain.class);
-   String temp;
+   
+   private String temp;
 
 
    protected void close(HttpServletRequest req) {
@@ -39,7 +40,7 @@ public class VastServlet extends HttpServlet {
 
    }
    
-   protected ArrayList<String> getDataFromConfig(String key, String resultType)
+  protected ArrayList<String> getDataFromConfig(String key, String resultType)
    {
 	   Set<String> allNames = Common.propLoad().stringPropertyNames();
 	   Iterator<String> iter = allNames.iterator();
@@ -57,19 +58,22 @@ public class VastServlet extends HttpServlet {
    }
 
    public String[] getResp(HttpServletRequest req) {
-      String filename = null;
+      
+	  String filename = null;
       String defaultFile = Common.propLoad().getProperty("DefaultRespFile");
       String defaultRespCode = Common.propLoad().getProperty("DefaultRespCode");
       String defaultLocation = Common.propLoad().getProperty("DefaultLocation");
       String[] resp = new String[3];
       String[] defaultResp = new String[]{defaultRespCode, defaultFile, "0"};
+      
       ArrayList<String> urls = getDataFromConfig("url", "key");
      
       
      
       if(defaultFile != null && defaultRespCode != null && defaultLocation != null) {
          Iterator<String>  iter = urls.iterator();
-         boolean cond;
+         boolean cond=false;
+         String[] urlValue;
          
          do {
             if(!iter.hasNext()) {
@@ -77,11 +81,20 @@ public class VastServlet extends HttpServlet {
             }
 
             temp = (String)iter.next();
+            urlValue = Common.propLoad().getProperty(temp).split(",");
             if(req.getQueryString() != null) {
-               cond = req.getRequestURI().contains(Common.propLoad().getProperty(temp)) || req.getQueryString().contains(Common.propLoad().getProperty(temp));
+            	for(int i=0; i<urlValue.length; i++)
+            	{
+               cond = req.getRequestURI().contains(urlValue[i]) || req.getQueryString().contains(urlValue[i]);
+               if (cond) break;
+            	}
             } else {
-               cond = req.getRequestURI().contains(Common.propLoad().getProperty(temp));
-            }
+            	for(int i=0; i<urlValue.length; i++)
+            	{
+               cond = req.getRequestURI().contains(urlValue[i]);
+               if (cond) break;
+            	}
+                   }
          } while(!cond);
 
          String respNumber = temp.substring(3);
@@ -95,12 +108,13 @@ public class VastServlet extends HttpServlet {
          switch(respCode) {
          case "200":
             if(respCode.equals("200")) {
-               String[] allResps =  Common.propLoad().getProperty("resp" + respNumber).split(",");
-            	filename = allResps[(int)(Math.random()*allResps.length)];
-               if(filename == null) {
-                  return defaultResp;
-               }
-
+               String[] allResps =  Common.propLoad().getProperty("resp" + respNumber, defaultFile).split(",");
+               filename = allResps[(int)(Math.random()*allResps.length)];
+               if(filename.equals("")) {
+                   return defaultResp;
+                }
+               filename = allResps[(int)(Math.random()*allResps.length)];
+               
                resp[0] = "200";
                resp[1] = filename;
                resp[2] = "0";
@@ -129,7 +143,7 @@ public class VastServlet extends HttpServlet {
                return resp;
             }
          }
-
+         
          resp[0] = respCode;
          resp[1] = "0";
          resp[2] = "0";
@@ -148,6 +162,8 @@ public class VastServlet extends HttpServlet {
 	   
        MDC.put("requestId", requestId);
       this.log.info("URL is:  " + req.getScheme() + ":/" + req.getRequestURI() + "?" + req.getQueryString());
+      
+      //log request headers
       Enumeration<String> headers = req.getHeaderNames();
 
       while(headers.hasMoreElements()) {
@@ -218,7 +234,7 @@ public class VastServlet extends HttpServlet {
         	 
          }
 
-       
+       //log response headers
        Collection<String> respHeaders = resp.getHeaderNames();
        Iterator<String> iterator = respHeaders.iterator();
        while (iterator.hasNext())
