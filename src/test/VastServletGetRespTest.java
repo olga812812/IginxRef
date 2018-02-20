@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class VastServletGetRespTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
-	private Common common = mock(Common.class);
+	private Common common = mock(Common.class,RETURNS_DEEP_STUBS);
 	VastServlet myServlet = new VastServlet();
 	
 	@Test

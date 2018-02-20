@@ -198,7 +198,7 @@ public class VastServlet extends HttpServlet {
                resp.setStatus(200);
                resp.setContentType("text/xml");
                String file = respArray[1];
-               this.log.info("Response file is:  " +file); 
+               this.log.info("Response file is:  " +file + " Request_id is: " + requestId); 
                FileInputStream fis = new FileInputStream(new File("html//" + file));
                Scanner in = new Scanner(fis);
 
