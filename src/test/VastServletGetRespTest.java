@@ -1,8 +1,11 @@
 package test;
 
+import java.util.Properties;
+
 import main.Common;
 import main.VastServlet;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,9 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 
 public class VastServletGetRespTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
-	private Common common = mock(Common.class,RETURNS_DEEP_STUBS);
 	VastServlet myServlet = new VastServlet();
 	
+
 	@Test
 	public void checkStringInQS()
 	{
@@ -131,13 +134,12 @@ public class VastServletGetRespTest {
 	@Test (expected=NullPointerException.class)
 	public void checkIfNoDefaultFileRespLocation()
 	{
+		
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("anotherCode");
 		when(request.getRequestURI()).thenReturn("/");
-	
-		when(common.propLoad().getProperty("DefaultRespFile")).thenReturn(null);
-		when(common.propLoad().getProperty("DefaultRespCode")).thenReturn(null);
-		when(common.propLoad().getProperty("DefaultLocation")).thenReturn(null);
+		
+				
 		myServlet.getResp(request);
 	}
 }

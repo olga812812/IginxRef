@@ -11,6 +11,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ import org.apache.log4j.MDC;
 public class VastServlet extends HttpServlet {
 
    private final Logger log = Logger.getLogger(IGINXMain.class);
-   
+  
    private String temp;
 
 
@@ -65,6 +66,7 @@ public class VastServlet extends HttpServlet {
       String defaultLocation = Common.propLoad().getProperty("DefaultLocation");
       String[] resp = new String[3];
       String[] defaultResp = new String[]{defaultRespCode, defaultFile, "0"};
+      Common.print("Default data are: "+defaultFile +", "+ defaultRespCode+", "+defaultLocation);
       
       ArrayList<String> urls = getDataFromConfig("url", "key");
      
@@ -148,7 +150,7 @@ public class VastServlet extends HttpServlet {
          resp[1] = "0";
          resp[2] = "0";
          return resp;
-      } else {
+      } else { Common.print("Default data are: "+defaultFile +", "+ defaultRespCode+", "+defaultLocation);
          throw new NullPointerException("You should add DefaultRespFile, DefaultRespCode and DefaultLocation to config file");
       }
    }
@@ -160,8 +162,10 @@ public class VastServlet extends HttpServlet {
 	   Iterator<String>  iter = cookies.iterator();
 	   String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
 	   
+	  
+	   
        MDC.put("requestId", requestId);
-      this.log.info("URL is:  " + req.getScheme() + ":/" + req.getRequestURI() + "?" + req.getQueryString());
+      this.log.info("URL is:  " + req.getScheme() + ":/" + req.getRequestURI() + "?" + req.getQueryString()+" RequestId is: "+requestId);
       
       //log request headers
       Enumeration<String> headers = req.getHeaderNames();
@@ -198,17 +202,19 @@ public class VastServlet extends HttpServlet {
                resp.setStatus(200);
                resp.setContentType("text/xml");
                String file = respArray[1];
-               this.log.info("Response file is:  " +file + " Request_id is: " + requestId); 
+               this.log.info("Response file is:  " +file); 
                FileInputStream fis = new FileInputStream(new File("html//" + file));
                Scanner in = new Scanner(fis);
 
                String line;
-               for(long rnd = Math.round(Math.random() * 1.0E9D); in.hasNextLine(); out1.println(line)) {
+               while(in.hasNextLine()) {
                   line = in.nextLine();
                   if(line.contains("%session_id%")) {
-                     line = line.replace("%session_id%", String.valueOf(rnd));
+                     line = line.replace("%session_id%", String.valueOf(requestId));
                   }
+                  out1.println(line);
                }
+               
 
                in.close();
                fis.close();
