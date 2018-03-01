@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class OttServlet extends HttpServlet {
+	
+	Common common = new Common();
 
    protected void close(HttpServletRequest req) {
       HttpSession session = req.getSession(false);
@@ -19,9 +21,9 @@ public class OttServlet extends HttpServlet {
    }
 
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      Common.print(req.getRequestURI());
-      Common.print(req.getQueryString());
-      Common.print(req.getHeader("User-Agent"));
+      common.print(req.getRequestURI());
+      common.print(req.getQueryString());
+      common.print(req.getHeader("User-Agent"));
       resp.setStatus(200);
       resp.setContentType("text/html");
       resp.getWriter().println("<h1>Ott Servlet</h1>");

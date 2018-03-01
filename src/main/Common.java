@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class Common {
 
-	  synchronized public static Properties propLoad() {
+	  synchronized public  Properties propLoad() {
       Properties prop = new Properties();
       FileInputStream stream = null;
       InputStreamReader reader = null;
@@ -25,8 +25,13 @@ public class Common {
 
       return prop;
    }
+	  
+	  public String getProperty(String key)
+	  {
+		  return propLoad().getProperty(key);
+	  }
 
-   public static void print(String str) {
+   public void print(String str) {
       System.out.println(str);
    }
 }

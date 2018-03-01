@@ -1,19 +1,22 @@
 package test;
 
-import java.util.Properties;
 
 import main.Common;
 import main.VastServlet;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(Common.class)
 
 
 public class VastServletGetRespTest {
@@ -130,16 +133,19 @@ public class VastServletGetRespTest {
 		when(request.getRequestURI()).thenReturn("/");
 		assertArrayEquals(new String[]{"159","0","0"}, myServlet.getResp(request));
 	}
+
 	
 	@Test (expected=NullPointerException.class)
-	public void checkIfNoDefaultFileRespLocation()
+	
+	public void checkIfNoDefaultFileRespLocation() 	
 	{
 		
-		when(request.getProtocol()).thenReturn("HTTP/1.1");
-		when(request.getQueryString()).thenReturn("anotherCode");
-		when(request.getRequestURI()).thenReturn("/");
-		
+		PowerMockito.stub(PowerMockito.method(Common.class, "getProperty")).toReturn(null);
 				
+		when(request.getProtocol()).thenReturn("HTTP/1.1");
+		when(request.getQueryString()).thenReturn(null);
+		when(request.getRequestURI()).thenReturn("/");
+			
 		myServlet.getResp(request);
 	}
 }

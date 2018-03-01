@@ -14,13 +14,14 @@ import org.eclipse.jetty.util.ssl.SslContextFactory;
 public class IGINXMain {
 
    private static final Logger log = Logger.getLogger(IGINXMain.class);
+   static  Common common  = new Common();
 
 
    public static void main(String[] args) {
       try {
          Server ex = new Server();
          ServerConnector connector = new ServerConnector(ex);
-         connector.setPort(Integer.parseInt(Common.propLoad().getProperty("Port")));
+         connector.setPort(Integer.parseInt(common.getProperty("Port")));
          HttpConfiguration https = new HttpConfiguration();
          https.addCustomizer(new SecureRequestCustomizer());
          SslContextFactory sslContextFactory = new SslContextFactory();
@@ -28,7 +29,7 @@ public class IGINXMain {
          sslContextFactory.setKeyStorePassword("123456");
          sslContextFactory.setKeyManagerPassword("123456");
          ServerConnector sslConnector = new ServerConnector(ex, new ConnectionFactory[]{new SslConnectionFactory(sslContextFactory, "http/1.1"), new HttpConnectionFactory(https)});
-         sslConnector.setPort(Integer.parseInt(Common.propLoad().getProperty("SslPort")));
+         sslConnector.setPort(Integer.parseInt(common.getProperty("SslPort")));
          ex.setConnectors(new ServerConnector[]{connector, sslConnector});
          ServletContextHandler handler = new ServletContextHandler(ex, "/");
          handler.addServlet(VastServlet.class, "/");

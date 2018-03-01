@@ -9,9 +9,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
-import java.util.Properties;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -27,6 +25,7 @@ import org.apache.log4j.MDC;
 public class VastServlet extends HttpServlet {
 
    private final Logger log = Logger.getLogger(IGINXMain.class);
+   Common common  = new Common();
   
    private String temp;
 
@@ -43,7 +42,8 @@ public class VastServlet extends HttpServlet {
    
   protected ArrayList<String> getDataFromConfig(String key, String resultType)
    {
-	   Set<String> allNames = Common.propLoad().stringPropertyNames();
+	 
+	  Set<String> allNames = common.propLoad().stringPropertyNames();
 	   Iterator<String> iter = allNames.iterator();
 	   ArrayList<String> responseArray = new ArrayList<String>();
            
@@ -52,7 +52,7 @@ public class VastServlet extends HttpServlet {
           temp = (String)iter.next();
           if (temp.length()>=key.length()&&temp.substring(0, key.length()).equals(key))
              {if(resultType.equals("key")) responseArray.add(temp);
-              if (resultType.equals("value")) responseArray.add(Common.propLoad().getProperty(temp));
+              if (resultType.equals("value")) responseArray.add(common.getProperty(temp));
              }
         }
        return responseArray;
@@ -60,20 +60,21 @@ public class VastServlet extends HttpServlet {
 
    public String[] getResp(HttpServletRequest req) {
       
+	  
 	  String filename = null;
-      String defaultFile = Common.propLoad().getProperty("DefaultRespFile");
-      String defaultRespCode = Common.propLoad().getProperty("DefaultRespCode");
-      String defaultLocation = Common.propLoad().getProperty("DefaultLocation");
+      String defaultFile=common.getProperty("DefaultRespFile");
+      String defaultRespCode = common.getProperty("DefaultRespCode");
+      String defaultLocation = common.getProperty("DefaultLocation");
       String[] resp = new String[3];
       String[] defaultResp = new String[]{defaultRespCode, defaultFile, "0"};
-      Common.print("Default data are: "+defaultFile +", "+ defaultRespCode+", "+defaultLocation);
+      common.print("Default data are: "+defaultFile +", "+ defaultRespCode+", "+defaultLocation);
       
       ArrayList<String> urls = getDataFromConfig("url", "key");
      
       
      
       if(defaultFile != null && defaultRespCode != null && defaultLocation != null) {
-         Iterator<String>  iter = urls.iterator();
+    	 Iterator<String>  iter = urls.iterator();
          boolean cond=false;
          String[] urlValue;
          
@@ -83,7 +84,7 @@ public class VastServlet extends HttpServlet {
             }
 
             temp = (String)iter.next();
-            urlValue = Common.propLoad().getProperty(temp).split(",");
+            urlValue = common.getProperty(temp).split(",");
             if(req.getQueryString() != null) {
             	for(int i=0; i<urlValue.length; i++)
             	{
@@ -100,7 +101,8 @@ public class VastServlet extends HttpServlet {
          } while(!cond);
 
          String respNumber = temp.substring(3);
-         String respCode = Common.propLoad().getProperty("code" + respNumber);
+         String respCode = common.getProperty("code" + respNumber);
+         
          
          if(respCode == null) {
             respCode = "200";
@@ -110,7 +112,7 @@ public class VastServlet extends HttpServlet {
          switch(respCode) {
          case "200":
             if(respCode.equals("200")) {
-               String[] allResps =  Common.propLoad().getProperty("resp" + respNumber, defaultFile).split(",");
+               String[] allResps =  common.propLoad().getProperty("resp" + respNumber, defaultFile).split(",");
                filename = allResps[(int)(Math.random()*allResps.length)];
                if(filename.equals("")) {
                    return defaultResp;
@@ -133,7 +135,7 @@ public class VastServlet extends HttpServlet {
             break;
          case "302":
             if(respCode.equals("302")) {
-               String respLocation = Common.propLoad().getProperty("location" + respNumber);
+               String respLocation = common.getProperty("location" + respNumber);
                resp[0] = "302";
                resp[1] = "0";
                if(respLocation == null) {
@@ -150,9 +152,9 @@ public class VastServlet extends HttpServlet {
          resp[1] = "0";
          resp[2] = "0";
          return resp;
-      } else { Common.print("Default data are: "+defaultFile +", "+ defaultRespCode+", "+defaultLocation);
-         throw new NullPointerException("You should add DefaultRespFile, DefaultRespCode and DefaultLocation to config file");
-      }
+      } else { 
+    	 	  throw new NullPointerException("You should add DefaultRespFile, DefaultRespCode and DefaultLocation to config file");
+             }
    }
 
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -184,8 +186,8 @@ public class VastServlet extends HttpServlet {
     	  while(iter.hasNext())
     	  {
     	  temp = (String)iter.next();
-    	  Common.print(temp);
-    	  resp.addHeader("Set-Cookie", temp+requestId+"; expires="+dateFormat.format(date)+" 10:00:00 GMT; path=/; domain=" + Common.propLoad().getProperty("cookie_domain"));
+    	  common.print(temp);
+    	  resp.addHeader("Set-Cookie", temp+requestId+"; expires="+dateFormat.format(date)+" 10:00:00 GMT; path=/; domain=" + common.getProperty("cookie_domain"));
     	  }
       }
       if(req.getHeader("Origin") != null) {
