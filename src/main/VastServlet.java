@@ -157,7 +157,7 @@ public class VastServlet extends HttpServlet {
              }
    }
 
-   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	   Date date = new Date(new Date().getTime()+2592000000L);
 	   SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd-MMM-yyyy", Locale.ENGLISH);
 	   ArrayList<String> cookies = getDataFromConfig("Cookie", "value");
