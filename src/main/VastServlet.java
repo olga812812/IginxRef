@@ -186,7 +186,6 @@ public class VastServlet extends HttpServlet {
     	  while(iter.hasNext())
     	  {
     	  temp = (String)iter.next();
-    	  common.print(temp);
     	  resp.addHeader("Set-Cookie", temp+requestId+"; expires="+dateFormat.format(date)+" 10:00:00 GMT; path=/; domain=" + common.getProperty("cookie_domain"));
     	  }
       }

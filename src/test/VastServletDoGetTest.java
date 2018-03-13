@@ -30,6 +30,8 @@ public class VastServletDoGetTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
 	private HttpServletResponse resp = mock(HttpServletResponse.class);
 	VastServlet myServlet = new VastServlet();
+	Enumeration<String> headers = Collections.emptyEnumeration();
+	PrintWriter pWriter = new PrintWriter(System.out);
 
 	
 	
@@ -37,17 +39,9 @@ public class VastServletDoGetTest {
 	
 	public void checkResp200()
 	{
-		Enumeration<String> headers = Collections.emptyEnumeration();
-		PrintWriter pWriter = new PrintWriter(System.out);
-		when(request.getProtocol()).thenReturn("HTTP/1.1");
-		when(request.getQueryString()).thenReturn("puid6=5");
-		when(request.getRequestURI()).thenReturn("/");
-		when(request.getScheme()).thenReturn("http");
-		when(request.getHeaderNames()).thenReturn(headers);
-		when(request.getHeader(anyString())).thenReturn(null);
-		when(request.getRemoteAddr()).thenReturn("192.156.156.156");
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"200","un.xml","0"});
 		
+		when(request.getHeaderNames()).thenReturn(headers);
+		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"200","un.xml","0"});
 		
 		try
 		{
@@ -57,13 +51,77 @@ public class VastServletDoGetTest {
 		{ex.printStackTrace();}
 		verify(resp).setStatus(200);
 		verify(resp).setContentType("text/xml");
-		
-		
-		
-	
+			
 	  
 	}
 	
+	@Test
+	public void checkCORSHeaders()
+	{
+		String origin = "privet.ru";
+		when(request.getHeader("Origin")).thenReturn(origin);
+		when(request.getHeaderNames()).thenReturn(headers);
+		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"200","un.xml","0"});
+		
+		try
+		{
+			when(resp.getWriter()).thenReturn(pWriter);
+			myServlet.doGet(request, resp);}
+		catch (Exception ex) 
+		{ex.printStackTrace();}
+		
+		verify(resp).setHeader("Access-Control-Allow-Origin", origin);
+		verify(resp).setHeader("Access-Control-Allow-Credentials", "true");
+		
+	}
 	
+	@Test
+	public void checkResp204()
+	{
+		when(request.getHeaderNames()).thenReturn(headers);
+		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"204","0","0"});
+		try
+		{
+			when(resp.getWriter()).thenReturn(pWriter);
+			myServlet.doGet(request, resp);}
+		catch (Exception ex) 
+		{ex.printStackTrace();}
+		
+		verify(resp).setStatus(204);
+	}
+	
+	@Test
+	public void checkResp302()
+	{
+		String location = "http://location.ru";
+		when(request.getHeaderNames()).thenReturn(headers);
+		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"302","0",location});
+		try
+		{
+			when(resp.getWriter()).thenReturn(pWriter);
+			myServlet.doGet(request, resp);}
+		catch (Exception ex) 
+		{ex.printStackTrace();}
+		
+		verify(resp).setStatus(302);
+		verify(resp).setHeader("Location", location);
+	}
+	
+	@Test
+	public void checkAnotherRespCode()
+	{
+		
+		when(request.getHeaderNames()).thenReturn(headers);
+		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"404","0", "0"});
+		try
+		{
+			when(resp.getWriter()).thenReturn(pWriter);
+			myServlet.doGet(request, resp);}
+		catch (Exception ex) 
+		{ex.printStackTrace();}
+		
+		verify(resp).setStatus(200);
+		verify(resp).setContentType("text/html");
+	}
 
 }
