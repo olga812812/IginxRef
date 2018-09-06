@@ -79,7 +79,8 @@ public class VastServlet extends HttpServlet {
          String[] urlValue;
          
          do {
-            if(!iter.hasNext()) {
+            if(!iter.hasNext()) 
+            {
                return defaultResp;
             }
 

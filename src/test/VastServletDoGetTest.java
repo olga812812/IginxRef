@@ -48,7 +48,8 @@ public class VastServletDoGetTest {
 			when(resp.getWriter()).thenReturn(pWriter);
 			myServlet.doGet(request, resp);}
 		catch (Exception ex) 
-		{ex.printStackTrace();}
+		{
+			ex.printStackTrace();}
 		verify(resp).setStatus(200);
 		verify(resp).setContentType("text/xml");
 			

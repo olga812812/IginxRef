@@ -61,7 +61,6 @@ public class VastServletGetRespTest {
 	public void checkDefaultResp()
 	{
 		
-		
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("/");

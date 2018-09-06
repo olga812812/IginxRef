@@ -10,7 +10,8 @@ public class OttServlet extends HttpServlet {
 	
 	Common common = new Common();
 
-   protected void close(HttpServletRequest req) {
+   protected void close(HttpServletRequest req) 
+   {
       HttpSession session = req.getSession(false);
       if(session != null) {
          synchronized(session) {

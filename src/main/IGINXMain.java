@@ -36,7 +36,8 @@ public class IGINXMain {
          handler.addServlet(OttServlet.class, "/ott");
          ex.start();
          ex.join();
-      } catch (Exception ex) {
+      } catch (Exception ex) 
+      {
          ex.printStackTrace();
       }
 
