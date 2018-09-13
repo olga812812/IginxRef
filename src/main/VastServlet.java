@@ -24,8 +24,8 @@ import org.apache.log4j.MDC;
 
 public class VastServlet extends HttpServlet {
 
-   private final Logger log = Logger.getLogger(IGINXMain.class);
-   Common common  = new Common();
+   private final Logger log = Logger.getLogger(IginxStartPoint.class);
+   CommonMethods common  = new CommonMethods();
   
    private String temp;
 
@@ -43,7 +43,7 @@ public class VastServlet extends HttpServlet {
   protected ArrayList<String> getDataFromConfig(String key, String resultType)
    {
 	 
-	  Set<String> allNames = common.propLoad().stringPropertyNames();
+	  Set<String> allNames = common.loadPropertyFromFile().stringPropertyNames();
 	   Iterator<String> iter = allNames.iterator();
 	   ArrayList<String> responseArray = new ArrayList<String>();
            
@@ -113,7 +113,7 @@ public class VastServlet extends HttpServlet {
          switch(respCode) {
          case "200":
             if(respCode.equals("200")) {
-               String[] allResps =  common.propLoad().getProperty("resp" + respNumber, defaultFile).split(",");
+               String[] allResps =  common.loadPropertyFromFile().getProperty("resp" + respNumber, defaultFile).split(",");
                filename = allResps[(int)(Math.random()*allResps.length)];
                if(filename.equals("")) {
                    return defaultResp;

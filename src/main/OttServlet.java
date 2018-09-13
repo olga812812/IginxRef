@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 
 public class OttServlet extends HttpServlet {
 	
-	Common common = new Common();
+	CommonMethods common = new CommonMethods();
 
    protected void close(HttpServletRequest req) 
    {

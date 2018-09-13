@@ -1,12 +1,14 @@
 package main;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
 
-public class Common {
-
-	  synchronized public  Properties propLoad() {
+public class CommonMethods {	  
+  
+   synchronized public  Properties loadPropertyFromFile() 
+   {
       Properties prop = new Properties();
       FileInputStream stream = null;
       InputStreamReader reader = null;
@@ -17,22 +19,21 @@ public class Common {
          prop.load(reader);
          stream.close();
          reader.close();
-      } catch (Exception ex) {
-         System.out.println(ex);
-         
-      }
-      
-
+          } 
+      catch (Exception ex) 
+         {
+         System.out.println(ex);        
+         }      
       return prop;
    }
 	  
-	  public String getProperty(String key)
-	  {
-		  return propLoad().getProperty(key);
-	  }
-
-   public void print(String str) 
+   public String getProperty(String propertyName)
    {
-      System.out.println(str);
+      return loadPropertyFromFile().getProperty(propertyName);
+   }
+
+   public void print(String strintToPrint) 
+   {
+      System.out.println(strintToPrint);
    }
 }
