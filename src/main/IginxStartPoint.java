@@ -18,8 +18,7 @@ public class IginxStartPoint {
    
 
    public static void main(String[] args) 
-   {
-    	  callCommonMethod.print("iginx ref");    	  
+   {	  
     	  startIginx(createJettyServer());  
    }
    

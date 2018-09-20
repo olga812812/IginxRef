@@ -1,8 +1,9 @@
 package test;
 
 
-import main.Common;
+import main.CommonMethods;
 import main.VastServlet;
+import main.ConfigFile;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,12 +17,12 @@ import static org.mockito.Mockito.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Common.class)
+@PrepareForTest(CommonMethods.class)
 
 
 public class VastServletGetRespTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
-	VastServlet myServlet = new VastServlet();
+	ConfigFile configFile = new ConfigFile();
 	
 
 	@Test
@@ -32,7 +33,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("puid6=5");
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"200","afrin.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","afrin.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -43,7 +44,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("ctc.ru");
-		assertArrayEquals(new String[]{"200","ctc.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","ctc.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -54,7 +55,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("puid=noInFile");
 		when(request.getRequestURI()).thenReturn("puid6=5");
-		assertArrayEquals(new String[]{"200","afrin.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","afrin.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -64,7 +65,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"200","un.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","un.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -75,7 +76,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("event");
-		assertArrayEquals(new String[]{"204","0","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"204","0","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -86,7 +87,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("finish");
 		when(request.getRequestURI()).thenReturn("even");
-		assertArrayEquals(new String[]{"302","0","http://google.ru"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"302","0","http://google.ru"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -97,7 +98,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("finish2");
 		when(request.getRequestURI()).thenReturn("even");
-		assertArrayEquals(new String[]{"302","0","http://vi.ru"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"302","0","http://vi.ru"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -108,7 +109,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("noResp");
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"200","un.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","un.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -119,7 +120,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("emptyResp");
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"200","un.xml","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"200","un.xml","0"}, configFile.getResponseFromConfigFile(request));
 	}
 	
 	@Test
@@ -130,7 +131,7 @@ public class VastServletGetRespTest {
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("anotherCode");
 		when(request.getRequestURI()).thenReturn("/");
-		assertArrayEquals(new String[]{"159","0","0"}, myServlet.getResp(request));
+		assertArrayEquals(new String[]{"159","0","0"}, configFile.getResponseFromConfigFile(request));
 	}
 
 	
@@ -139,12 +140,12 @@ public class VastServletGetRespTest {
 	public void checkIfNoDefaultFileRespLocation() 	
 	{
 		
-		PowerMockito.stub(PowerMockito.method(Common.class, "getProperty")).toReturn(null);
+		PowerMockito.stub(PowerMockito.method(CommonMethods.class, "getProperty")).toReturn(null);
 				
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("/");
 			
-		myServlet.getResp(request);
+		configFile.getResponseFromConfigFile(request);
 	}
 }

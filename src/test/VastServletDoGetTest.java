@@ -21,9 +21,10 @@ import static org.junit.Assert.*;
 
 
 import main.VastServlet;
+import main.ConfigFile;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(VastServlet.class)
+@PrepareForTest(ConfigFile.class)
 
 
 public class VastServletDoGetTest {
@@ -41,7 +42,7 @@ public class VastServletDoGetTest {
 	{
 		
 		when(request.getHeaderNames()).thenReturn(headers);
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"200","un.xml","0"});
+		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"200","un.xml","0"});
 		
 		try
 		{
@@ -62,7 +63,7 @@ public class VastServletDoGetTest {
 		String origin = "privet.ru";
 		when(request.getHeader("Origin")).thenReturn(origin);
 		when(request.getHeaderNames()).thenReturn(headers);
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"200","un.xml","0"});
+		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"200","un.xml","0"});
 		
 		try
 		{
@@ -80,7 +81,7 @@ public class VastServletDoGetTest {
 	public void checkResp204()
 	{
 		when(request.getHeaderNames()).thenReturn(headers);
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"204","0","0"});
+		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"204","0","0"});
 		try
 		{
 			when(resp.getWriter()).thenReturn(pWriter);
@@ -96,7 +97,7 @@ public class VastServletDoGetTest {
 	{
 		String location = "http://location.ru";
 		when(request.getHeaderNames()).thenReturn(headers);
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"302","0",location});
+		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"302","0",location});
 		try
 		{
 			when(resp.getWriter()).thenReturn(pWriter);
@@ -113,7 +114,7 @@ public class VastServletDoGetTest {
 	{
 		
 		when(request.getHeaderNames()).thenReturn(headers);
-		PowerMockito.stub(PowerMockito.method(VastServlet.class, "getResp")).toReturn(new String[] {"404","0", "0"});
+		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"404","0", "0"});
 		try
 		{
 			when(resp.getWriter()).thenReturn(pWriter);
