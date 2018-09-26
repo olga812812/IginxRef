@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @PrepareForTest(CommonMethods.class)
 
 
-public class VastServletGetRespTest {
+public class ConfigFile_GetResponseFromConfigFileTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
 	ConfigFile configFile = new ConfigFile();
 	

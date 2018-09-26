@@ -62,7 +62,7 @@ public class VastServlet extends HttpServlet {
   protected void addHeadersToResponse(HttpServletRequest request, HttpServletResponse response){
 	   Date dateOneMonthAhead = new Date(new Date().getTime()+2592000000L);
 	   SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd-MMM-yyyy", Locale.ENGLISH);	
-	   ArrayList<String> allCookies = configFile.getDataFromConfig("Cookie", "value");
+	   ArrayList<String> allCookies = configFile.getKeyOrValueFromConfig("Cookie", "value");
 	   Iterator<String>  cookiesIterator = allCookies.iterator();
 	   String cookie;
 	   

@@ -58,8 +58,7 @@ public class IginxStartPoint {
    
    private static void addServlets(ServletContextHandler handler)
    {
-	   handler.addServlet(VastServlet.class, "/");
-	   handler.addServlet(OttServlet.class, "/ott");
+	   handler.addServlet(VastServlet.class, "/");	  
    }
    
    private static void startIginx(Server jettyServer)

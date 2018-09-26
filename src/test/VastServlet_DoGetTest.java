@@ -3,12 +3,12 @@ package test;
 
 import static org.mockito.Mockito.*;
 
-import java.io.OutputStream;
+
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Enumeration;
 
-import javax.servlet.ServletResponse;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import static org.junit.Assert.*;
+
 
 
 import main.VastServlet;
@@ -27,7 +27,7 @@ import main.ConfigFile;
 @PrepareForTest(ConfigFile.class)
 
 
-public class VastServletDoGetTest {
+public class VastServlet_DoGetTest {
 	private HttpServletRequest request = mock(HttpServletRequest.class);
 	private HttpServletResponse resp = mock(HttpServletResponse.class);
 	VastServlet myServlet = new VastServlet();
