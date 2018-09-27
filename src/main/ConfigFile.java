@@ -97,13 +97,13 @@ public class ConfigFile {
 	}
 	
 	protected ArrayList<String> getKeyOrValueFromConfig(String key, String resultType) {
-		   Set<String> allProperties = callCommonMethod.loadPropertyFromFile().stringPropertyNames();
+		   Set<String> allProperties = callCommonMethod.loadPropertyFromFile().stringPropertyNames();		  
 		   Iterator<String> propertiesIterator = allProperties.iterator();
 		   ArrayList<String> dataFromConfigFile = new ArrayList<String>();
 		   String property;
 	           
 	       while(propertiesIterator.hasNext()) {
-	    	   property = (String)propertiesIterator.next();
+	    	   property = (String)propertiesIterator.next();	    	  
 	           if (property.length()>=key.length()&&property.substring(0, key.length()).equals(key)) {
 	        	  if(resultType.equals("key")) dataFromConfigFile.add(property);
 	              if (resultType.equals("value")) dataFromConfigFile.add(callCommonMethod.getProperty(property));
