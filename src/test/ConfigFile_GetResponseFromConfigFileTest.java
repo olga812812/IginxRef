@@ -26,10 +26,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	
 
 	@Test
-	public void checkStringInQS()
-	{
-		
-	
+	public void checkStringInQS(){		
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("puid6=5");
 		when(request.getRequestURI()).thenReturn("/");
@@ -37,10 +34,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkStringInUriQSIsNull()
-	{
-		
-		
+	public void checkStringInUriQSIsNull(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("ctc.ru");
@@ -48,10 +42,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkStringInUriQSIsNotNull()
-	{
-		
-		
+	public void checkStringInUriQSIsNotNull(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("puid=noInFile");
 		when(request.getRequestURI()).thenReturn("puid6=5");
@@ -59,9 +50,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkDefaultResp()
-	{
-		
+	public void checkDefaultResp(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("/");
@@ -69,10 +58,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkCode204()
-	{
-		
-		
+	public void checkCode204(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
 		when(request.getRequestURI()).thenReturn("event");
@@ -80,10 +66,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkCode302LocationIsNotNull()
-	{
-		
-	
+	public void checkCode302LocationIsNotNull(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("finish");
 		when(request.getRequestURI()).thenReturn("even");
@@ -91,10 +74,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkCode302LocationIsNull()
-	{
-		
-	
+	public void checkCode302LocationIsNull(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("finish2");
 		when(request.getRequestURI()).thenReturn("even");
@@ -102,10 +82,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkIfNoRespInConfig()
-	{
-		
-		
+	public void checkIfNoRespInConfig(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("noResp");
 		when(request.getRequestURI()).thenReturn("/");
@@ -113,10 +90,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkIfEmptyRespInConfig()
-	{
-		
-	
+	public void checkIfEmptyRespInConfig(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("emptyResp");
 		when(request.getRequestURI()).thenReturn("/");
@@ -124,10 +98,7 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	}
 	
 	@Test
-	public void checkIfCodeInConfigNot200204302()
-	{
-		
-	
+	public void checkIfCodeInConfigNot200204302(){
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn("anotherCode");
 		when(request.getRequestURI()).thenReturn("/");
@@ -137,15 +108,11 @@ public class ConfigFile_GetResponseFromConfigFileTest {
 	
 	@Test (expected=NullPointerException.class)
 	
-	public void checkIfNoDefaultFileRespLocation() 	
-	{
-		
-		PowerMockito.stub(PowerMockito.method(CommonMethods.class, "getProperty")).toReturn(null);
-				
+	public void checkIfNoDefaultFileRespLocation() 	{
+		PowerMockito.stub(PowerMockito.method(CommonMethods.class, "getProperty")).toReturn(null);			
 		when(request.getProtocol()).thenReturn("HTTP/1.1");
 		when(request.getQueryString()).thenReturn(null);
-		when(request.getRequestURI()).thenReturn("/");
-			
+		when(request.getRequestURI()).thenReturn("/");			
 		configFile.getResponseFromConfigFile(request);
 	}
 }

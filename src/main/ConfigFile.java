@@ -11,15 +11,15 @@ import org.apache.log4j.Logger;
 public class ConfigFile {
 	protected CommonMethods callCommonMethod  = new CommonMethods();
 	private final Logger log = Logger.getLogger(IginxStartPoint.class);
-	protected String defaultRespCode,defaultFile,defaultLocation;   	
+	protected String defaultRespCode,defaultFile,defaultLocation;   
+	protected String[] defaultResponse;
 	
 	public String[] getResponseFromConfigFile(HttpServletRequest request) {
 		  String responseVastFileName;
 		  String responseCode;
 		  String responseLocation;
 		  String responseNumberFromConfigFile;
-		  String responseUrlFromConfigFile;
-		  String[] defaultResponse = new String[]{defaultRespCode, defaultFile, "0"};  
+		  String responseUrlFromConfigFile;		 		
 		
 	      if(!isThereDefaultDataInConfigFile()) throw new NullPointerException("You should add DefaultRespFile, DefaultRespCode and DefaultLocation to config file");	 	      
 	      responseUrlFromConfigFile=getResponseUrlFromConfigFile(request); 	 	      
@@ -62,8 +62,9 @@ public class ConfigFile {
 	        
 	   }
 	
-	protected boolean isThereDefaultDataInConfigFile() {
-		initDefaultValues();	    		
+	protected boolean isThereDefaultDataInConfigFile() {	
+		initDefaultValues();
+		defaultResponse = new String[]{defaultRespCode, defaultFile, "0"};  
 	    if(defaultFile == null || defaultRespCode == null || defaultLocation == null) return false; 
 	    else return true;
 	}

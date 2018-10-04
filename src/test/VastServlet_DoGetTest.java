@@ -38,9 +38,7 @@ public class VastServlet_DoGetTest {
 	
 	@Test
 	
-	public void checkResp200()
-	{
-		
+	public void checkResp200(){		
 		when(request.getHeaderNames()).thenReturn(headers);
 		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"200","un.xml","0"});
 		
@@ -52,14 +50,11 @@ public class VastServlet_DoGetTest {
 		{
 			ex.printStackTrace();}
 		verify(resp).setStatus(200);
-		verify(resp).setContentType("text/xml");
-			
-	  
+		verify(resp).setContentType("text/xml");				  
 	}
 	
 	@Test
-	public void checkCORSHeaders()
-	{
+	public void checkCORSHeaders(){
 		String origin = "privet.ru";
 		when(request.getHeader("Origin")).thenReturn(origin);
 		when(request.getHeaderNames()).thenReturn(headers);
@@ -73,13 +68,11 @@ public class VastServlet_DoGetTest {
 		{ex.printStackTrace();}
 		
 		verify(resp).setHeader("Access-Control-Allow-Origin", origin);
-		verify(resp).setHeader("Access-Control-Allow-Credentials", "true");
-		
+		verify(resp).setHeader("Access-Control-Allow-Credentials", "true");		
 	}
 	
 	@Test
-	public void checkResp204()
-	{
+	public void checkResp204(){
 		when(request.getHeaderNames()).thenReturn(headers);
 		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"204","0","0"});
 		try
@@ -93,8 +86,7 @@ public class VastServlet_DoGetTest {
 	}
 	
 	@Test
-	public void checkResp302()
-	{
+	public void checkResp302(){
 		String location = "http://location.ru";
 		when(request.getHeaderNames()).thenReturn(headers);
 		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"302","0",location});
@@ -110,9 +102,7 @@ public class VastServlet_DoGetTest {
 	}
 	
 	@Test
-	public void checkAnotherRespCode()
-	{
-		
+	public void checkAnotherRespCode() {		
 		when(request.getHeaderNames()).thenReturn(headers);
 		PowerMockito.stub(PowerMockito.method(ConfigFile.class, "getResponseFromConfigFile")).toReturn(new String[] {"404","0", "0"});
 		try

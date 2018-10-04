@@ -12,7 +12,7 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.Set;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
 
 public class VastServlet extends HttpServlet {
-   private final Logger log = Logger.getLogger(IginxStartPoint.class);
+   protected Logger log = Logger.getLogger(IginxStartPoint.class);
    private CommonMethods callCommonMethod  = new CommonMethods();
    private ConfigFile configFile = new ConfigFile();
    private String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
