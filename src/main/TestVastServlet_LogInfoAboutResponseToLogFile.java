@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(PowerMockRunner.class)
 
-public class TestVastServlet_logInfoAboutResponseToLogFile {
+public class TestVastServlet_LogInfoAboutResponseToLogFile {
 	VastServlet vastServletObject = new VastServlet();
 	Logger logger = mock(Logger.class);
 	HttpServletResponse response = mock(HttpServletResponse.class);

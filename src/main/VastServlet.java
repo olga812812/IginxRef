@@ -27,7 +27,8 @@ public class VastServlet extends HttpServlet {
    protected Logger log = Logger.getLogger(IginxStartPoint.class);
    private CommonMethods callCommonMethod  = new CommonMethods();
    private ConfigFile configFile = new ConfigFile();
-   private String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
+   protected String requestId = String.valueOf(Math.round(Math.random() * 1.0E9D));
+   protected String defaultResponsePage = "<h1>OOOOPsOOOPsss...</h1>";
    
    
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
@@ -125,7 +126,7 @@ public class VastServlet extends HttpServlet {
          default:
         	 response.setStatus(200);
         	 response.setContentType("text/html");
-        	 responseOutStream.println("<h1>OOOOPsOOOPsss...</h1>");
+        	 responseOutStream.println(defaultResponsePage);
         }
   }    
   

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @RunWith(PowerMockRunner.class)
 
-public class TestVastServlet_closeHttpSession {
+public class TestVastServlet_CloseHttpSession {
 	VastServlet vastServletObject = new VastServlet();
 	
 	@Test	

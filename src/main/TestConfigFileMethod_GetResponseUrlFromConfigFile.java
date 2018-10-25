@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 
 
-public class TestConfigFileMethod_getResponseUrlFromConfigFile {
+public class TestConfigFileMethod_GetResponseUrlFromConfigFile {
 	
 	HttpServletRequest request = mock(HttpServletRequest.class);
 	ConfigFile configFile = new ConfigFile();

@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({CommonMethods.class,Properties.class})
 
-public class TestConfigFileMethod_getKeyOrValueFromConfig {
+public class TestConfigFileMethod_GetKeyOrValueFromConfig {
 	Properties properties = mock(Properties.class);
 	Set<String> allProperties;
 	ConfigFile configFile = new ConfigFile();
